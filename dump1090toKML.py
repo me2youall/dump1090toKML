@@ -29,7 +29,7 @@ def load_dump1090():
     output: {ICAO:[HEXcolor, CallSign, Track[long,lat,alt]]"""
     KMLdict = {}
 
-    with open('log.csv', newline='') as csvfile:
+    with open(fileName, newline='') as csvfile:
         reader = csv.DictReader(csvfile, fieldnames=("MSG", "A", "B", "C", "ICAO", "D", "DATE1", "TIME1", "DATE2", "TIME2", "CallSign", "alt", "E", "F", "long", "lat", "G", "H", "I", "J", "K", "L"))
         for row in reader:
             if row['ICAO'] not in KMLdict:
