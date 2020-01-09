@@ -4,6 +4,16 @@ import random
 import string
 import os.path
 
+arguments = len(sys.argv) - 1
+if arguments < 1:
+    print("No file specified.")
+    quit()
+else:
+    fileName = sys.argv[1]
+
+if not os.path.isdir("./output"):
+    os.mkdir("./output")
+
 def set_HEX_color():
     """Generates a random HEX 00-FF color for KML;
     input: None
@@ -51,7 +61,7 @@ def createKML(KMLdict, ICAO):
     for position in track:
         track_output += position[0] + ',' + position[1] + ',' + position[2] + "\n"
 
-    with open(name + ".kml", "w") as kmlfile:
+    with open("./output/" + name + ".kml", "w") as kmlfile: 
         kmlfile.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
         kmlfile.write("<kml xmlns=\"http://www.opengis.net/kml/2.2\">\n")
         kmlfile.write("<Document>\n")
